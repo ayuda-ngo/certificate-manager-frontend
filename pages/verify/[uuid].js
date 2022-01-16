@@ -29,9 +29,11 @@ const Post = ({ uuid, data }) => {
       <section>
         <div className="w-full h-auto md:h-screen md:flex md:flex-row relative">
           <div className="md:w-3/4 md:h-full relative bg-[#F8F8FE] pt-6">
-            <button className="flex w-full items-center pl-6 md:pl-11">
-              <Image src={backSign} alt="Go Back" width={18} height={18} />
-              <div className="inline pl-1 font-medium text-sm">Back</div>
+            <button className="flex items-center ml-6 md:ml-11 border-2 rounded-lg w-20 h-8 border-[#000]">
+              <div className="w-full flex justify-center">
+                <Image src={backSign} alt="Go Back" width={18} height={18} />
+                <div className="inline pl-1 font-medium text-sm">Back</div>
+              </div>
             </button>
             <div className="pt-10">
               <h1 className="pl-6 md:pl-11 font-semibold">Preview</h1>
