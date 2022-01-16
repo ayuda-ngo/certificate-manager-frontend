@@ -3,6 +3,10 @@ import Head from "next/head";
 import Image from "next/image";
 import instance from "../../lib/axiosInstance";
 
+// Project Imports
+import backSign from "../../public/assests/back-sign.svg";
+import certificateSign from "../../public/assests/certificate-sign.svg";
+
 const Post = ({ uuid, data }) => {
   const doc = new jsPDF();
   doc.addImage(data.data.image, "PNG", 0, 0, 210, 297);
@@ -18,21 +22,57 @@ const Post = ({ uuid, data }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-      <p>UUID: {uuid}</p>
+      {/* <p>UUID: {uuid}</p> */}
 
-      <Image
-        src={data.data.image}
-        alt="certificate"
-        layout="fill" // required
-        objectFit="scale-down"
-        className="w-16 md:w-32 lg:w-48"
-      />
-      <button
-        onClick={handleDownload}
-        className="w-80 border-2 inline-block h-12 px-5 py-3 text-sm rounded-lg border-black"
-      >
-        Download
-      </button>
+      <section>
+        <div className="w-full h-auto md:h-screen md:flex md:flex-row relative">
+          <div className="md:w-3/4 md:h-full relative bg-[#F8F8FE] pt-6">
+            <div className="flex w-full items-center pl-6 md:pl-11">
+              <Image src={backSign} alt="Go Back" width={18} height={18} />
+              <p className="inline pl-1 font-medium text-sm">Back</p>
+            </div>
+            <div className="pt-10">
+              <h1 className="pl-6 md:pl-11 font-semibold">Preview</h1>
+              <div className="flex justify-center">
+                <div className="w-11/12 flex justify-center bg-[#CACACA] my-6 p-6 relative">
+                  <div className="h-auto w-96">
+                    <Image
+                      src={data.data.image}
+                      alt="Certificate"
+                      layout="responsive"
+                      width={384}
+                      height={544}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="md:w-1/4 md:h-full relative pt-6 md:border-l-2 md:border-[#E3EBF6]">
+            <div className="w-full h-full flex flex-col relative justify-between">
+              <div className=" w-full flex justify-center items-center md:border-b-2 md:pb-3 pb-6">
+                <Image
+                  src={certificateSign}
+                  alt="Go Back"
+                  width={24}
+                  height={24}
+                />
+                <p className="inline pl-2 text-[#0034A5] font-semibold md:text-2xl text-xl">
+                  Certificate
+                </p>
+              </div>
+              <div className="w-full flex justify-center pb-8">
+                <button
+                  onClick={handleDownload}
+                  className="text-white hover:text-[#0034A5] bg-[#0034A5] hover:bg-white border-solid border-2 border-white hover:border-[#0034A5] duration-300 hover:duration-300 w-2/4 py-2 rounded-lg"
+                >
+                  Download
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
