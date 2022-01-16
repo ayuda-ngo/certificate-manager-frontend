@@ -6,6 +6,8 @@ import instance from "../../lib/axiosInstance";
 // Project Imports
 import backSign from "../../public/assests/back-sign.svg";
 import certificateSign from "../../public/assests/certificate-sign.svg";
+import downloadIcon from "../../public/assests/download-icon.svg";
+import linkIcon from "../../public/assests/link-icon.svg";
 
 const Post = ({ uuid, data }) => {
   const doc = new jsPDF();
@@ -27,10 +29,10 @@ const Post = ({ uuid, data }) => {
       <section>
         <div className="w-full h-auto md:h-screen md:flex md:flex-row relative">
           <div className="md:w-3/4 md:h-full relative bg-[#F8F8FE] pt-6">
-            <div className="flex w-full items-center pl-6 md:pl-11">
+            <button className="flex w-full items-center pl-6 md:pl-11">
               <Image src={backSign} alt="Go Back" width={18} height={18} />
-              <p className="inline pl-1 font-medium text-sm">Back</p>
-            </div>
+              <div className="inline pl-1 font-medium text-sm">Back</div>
+            </button>
             <div className="pt-10">
               <h1 className="pl-6 md:pl-11 font-semibold">Preview</h1>
               <div className="flex justify-center">
@@ -61,13 +63,36 @@ const Post = ({ uuid, data }) => {
                   Certificate
                 </p>
               </div>
-              <div className="w-full flex justify-center pb-8">
-                <button
-                  onClick={handleDownload}
-                  className="text-white hover:text-[#0034A5] bg-[#0034A5] hover:bg-white border-solid border-2 border-white hover:border-[#0034A5] duration-300 hover:duration-300 w-2/4 py-2 rounded-lg"
-                >
-                  Download
-                </button>
+              <div>
+                <div className="w-full flex justify-center pb-8">
+                  <button
+                    className="text-white bg-[#0034A5] w-2/4 py-2 rounded-lg"
+                    onClick={handleDownload}
+                  >
+                    <div className="flex justify-center items-end">
+                      <Image
+                        src={downloadIcon}
+                        alt="Download"
+                        width={20}
+                        height={24}
+                      />
+                      <div className="pl-2">Download</div>
+                    </div>
+                  </button>
+                </div>
+                <div className="w-full flex justify-center pb-8">
+                  <button className="text-black bg-[#FFCF00] w-2/4 py-2 rounded-lg">
+                    <div className="flex justify-center items-end">
+                      <Image
+                        src={linkIcon}
+                        alt="Download"
+                        width={20}
+                        height={24}
+                      />
+                      <div className="pl-2">Share</div>
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
