@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 // Project Imports
 import { jsPDF } from "jspdf";
 import instance from "../../lib/axiosInstance";
-import certificateSign from "../../public/assests/certificate-sign.svg";
 
 const Post = ({ certificate }) => {
   const [certificateImage, setCertificateImage] = useState(null);
@@ -14,14 +13,11 @@ const Post = ({ certificate }) => {
 
   const router = useRouter();
 
-  const doc = new jsPDF();
-
   useEffect(() => {
     const fetchImageData = async () => {
       const res = await instance.get(`/certificates/${certificate.uuid}/image`);
       setCertificateImage(res.data.data);
       setIsLoading(false);
-      doc.addImage(res.data.data, "PNG", 0, 0, 210, 297);
     };
 
     fetchImageData();
@@ -29,7 +25,14 @@ const Post = ({ certificate }) => {
   }, []);
 
   const handleDownload = () => {
+    const doc = new jsPDF();
+
+    doc.addImage(certificateImage, "PNG", 0, 0, 210, 297);
     doc.save(`${certificate.name}.pdf`);
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(certificate.url);
   };
 
   return (
@@ -136,7 +139,10 @@ const Post = ({ certificate }) => {
                   </button>
                 </div>
                 <div className="w-full flex justify-center pb-8">
-                  <button className="text-black bg-[#FFCF00] w-2/4 py-2 rounded-lg">
+                  <button
+                    className="text-black bg-[#FFCF00] w-2/4 py-2 rounded-lg"
+                    onClick={handleCopy}
+                  >
                     <div className="flex justify-center items-end">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
