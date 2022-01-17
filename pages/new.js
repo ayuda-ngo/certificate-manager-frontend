@@ -31,4 +31,6 @@ const New = () => {
   );
 };
 
+New.authenticationEnabled = true;
+
 export default New;

@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { signIn } from "next-auth/react";
+import { useRef } from "react";
+import { getSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 
 import Image from "next/image";
@@ -18,8 +18,6 @@ const LogIn = () => {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
-
-    console.log(enteredEmail, enteredPassword);
 
     const res = await signIn("credentials", {
       redirect: false,
@@ -84,5 +82,22 @@ const LogIn = () => {
     </section>
   );
 };
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/dashboard",
+        permanent: true,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+}
 
 export default LogIn;

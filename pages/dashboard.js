@@ -2,8 +2,12 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 import instance from "../lib/axiosInstance";
 
-const Dashboard = ({ data }) => {
+const Dashboard = ({ certificates, error }) => {
   const { data: session } = useSession();
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   if (session) {
     return (
@@ -12,7 +16,7 @@ const Dashboard = ({ data }) => {
         <button onClick={() => signOut()}>Sign out</button>
         <div>
           <h1>Dashboard</h1>
-          <pre>{JSON.stringify(data, null, 2)}</pre>
+          <pre>{JSON.stringify(certificates, null, 2)}</pre>
         </div>
       </>
     );
@@ -26,24 +30,24 @@ const Dashboard = ({ data }) => {
   );
 };
 
-export async function getServerSideProps(context) {
+Dashboard.authenticationEnabled = true;
+
+export async function getServerSideProps() {
   const res = await instance.get(`/certificates`);
   const data = res.data;
 
   if (data.success) {
     return {
       props: {
-        data,
+        certificates: data.data,
       },
     };
   }
 
   return {
     props: {
-      data: {
-        success: false,
+      error: {
         message: data.message,
-        data: null,
       },
     },
   };

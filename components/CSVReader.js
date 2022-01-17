@@ -13,7 +13,6 @@ export default class CSVReaderComponent extends Component {
   };
 
   handleOnFileLoad = (data) => {
-    console.log(data.shift());
     data.pop();
     this.props.setCSVData(data);
     console.log("---------------------------");
