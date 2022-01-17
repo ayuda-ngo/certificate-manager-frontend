@@ -6,10 +6,7 @@ import { useRouter } from "next/router";
 // Project Imports
 import { jsPDF } from "jspdf";
 import instance from "../../lib/axiosInstance";
-import backSign from "../../public/assests/back-sign.svg";
 import certificateSign from "../../public/assests/certificate-sign.svg";
-import downloadIcon from "../../public/assests/download-icon.svg";
-import linkIcon from "../../public/assests/link-icon.svg";
 
 const Post = ({ certificate }) => {
   const [certificateImage, setCertificateImage] = useState(null);
@@ -50,7 +47,20 @@ const Post = ({ certificate }) => {
               onClick={() => router.back()}
             >
               <div className="w-full flex justify-center">
-                <Image src={backSign} alt="Go Back" width={18} height={18} />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                  />
+                </svg>
                 <div className="inline pl-1 font-medium text-sm">Back</div>
               </div>
             </button>
@@ -76,12 +86,26 @@ const Post = ({ certificate }) => {
           <div className="md:w-1/4 md:h-full relative pt-6 md:border-l-2 md:border-[#E3EBF6]">
             <div className="w-full h-full flex flex-col relative justify-between">
               <div className=" w-full flex justify-center items-center md:border-b-2 md:pb-3 pb-6">
-                <Image
-                  src={certificateSign}
-                  alt="Go Back"
-                  width={24}
-                  height={24}
-                />
+                <svg
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18 13.25L19.434 16.0272L22.5 16.4728L20.25 18.5L20.8282 21.5L18 19.8125L15.1718 21.5L15.75 18.5L13.5 16.4728L16.65 16.0272L18 13.25Z"
+                    fill="#0034A5"
+                  />
+                  <path d="M4.5 12.5H9V14H4.5V12.5Z" fill="#0034A5" />
+                  <path d="M4.5 9.5H12V11H4.5V9.5Z" fill="#0034A5" />
+                  <path d="M4.5 6.5H12V8H4.5V6.5Z" fill="#0034A5" />
+                  <path
+                    d="M12 20H3V5H21V12.5H22.5V5C22.5 4.60218 22.342 4.22064 22.0607 3.93934C21.7794 3.65804 21.3978 3.5 21 3.5H3C2.60218 3.5 2.22064 3.65804 1.93934 3.93934C1.65804 4.22064 1.5 4.60218 1.5 5V20C1.5 20.3978 1.65804 20.7794 1.93934 21.0607C2.22064 21.342 2.60218 21.5 3 21.5H12V20Z"
+                    fill="#0034A5"
+                  />
+                </svg>
+
                 <p className="inline pl-2 text-[#0034A5] font-semibold md:text-2xl text-xl">
                   Certificate
                 </p>
@@ -93,12 +117,20 @@ const Post = ({ certificate }) => {
                     onClick={handleDownload}
                   >
                     <div className="flex justify-center items-end">
-                      <Image
-                        src={downloadIcon}
-                        alt="Download"
-                        width={20}
-                        height={24}
-                      />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                        />
+                      </svg>
                       <div className="pl-2">Download</div>
                     </div>
                   </button>
@@ -106,12 +138,20 @@ const Post = ({ certificate }) => {
                 <div className="w-full flex justify-center pb-8">
                   <button className="text-black bg-[#FFCF00] w-2/4 py-2 rounded-lg">
                     <div className="flex justify-center items-end">
-                      <Image
-                        src={linkIcon}
-                        alt="Share"
-                        width={20}
-                        height={24}
-                      />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+                        />
+                      </svg>
                       <div className="pl-2">Share</div>
                     </div>
                   </button>
