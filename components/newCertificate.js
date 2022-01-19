@@ -1,17 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-
-// project imports
-import CreateComponent from "../components/CreateCertificate";
-import CSVReader from "../components/CSVReader";
 import GenerateCertificate from "../components/GenerateCertificate";
 import BrowseCertificate from "../components/BrowseCertificate";
 
-import logo from "../public/assests/logo2.svg";
+import logo from "../public/logo2.svg";
 
-const New = () => {
-  const [csvData, setCSVData] = useState(null);
-
+const NewCertificate = () => {
   const greeting = () => {
     let currentHours = new Date().getHours();
     if (currentHours < 12) {
@@ -41,27 +35,6 @@ const New = () => {
   };
 
   return (
-    // <div>
-    //   <h1>New</h1>
-    //   <CreateComponent />
-    //   <CSVReader setCSVData={setCSVData} />
-    //   {csvData &&
-    //     csvData.map((row, idx) => (
-    //       <div key={idx}>
-    //         <pre>{JSON.stringify(row.data[0], null, 2)}</pre>
-    //         <CreateComponent
-    //           inputValues={{
-    //             email: row.data[0],
-    //             name: row.data[1],
-    //             regno: row.data[2],
-    //             year: row.data[3],
-    //             month: row.data[4],
-    //           }}
-    //         />
-    //       </div>
-    //     ))}
-    // </div>
-
     <section>
       <div className="w-screen h-screen md:w-screen md:min-h-screen md:flex">
         {/* left side */}
@@ -183,6 +156,4 @@ const New = () => {
   );
 };
 
-New.authenticationEnabled = true;
-
-export default New;
+export default NewCertificate;
