@@ -6,7 +6,7 @@ import DownloadIcon from "./DownloadIcon";
 import FolderIcon from "./FolderIcon";
 import LeftArrowIcon from "./LeftArrowIcon";
 import LoadingIcon from "./LoadingIcon";
-import LogOutIcon from "./LogoutIcon";
+import LogOutIcon from "./LogOutIcon";
 import PlusCircle from "./PlusCircle";
 import RemoveFolderIcon from "./RemoveFolderIcon";
 import ShareIcon from "./ShareIcon";
