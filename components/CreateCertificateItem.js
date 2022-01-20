@@ -4,13 +4,15 @@ import instance from "../lib/axiosInstance";
 
 const CreateCertificateItem = ({ inputValues }) => {
   const [isLoading, setLoading] = useState(false);
-  const [data, setData] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(null);
 
   const [values, setValues] = useState((inputValues) => {
     if (inputValues) {
       return {
         name: inputValues.name.trim(),
         email: inputValues.email.trim(),
+        type: inputValues.type.trim(),
         regno: inputValues.regno.trim(),
         year: inputValues.year.trim(),
         month: inputValues.month.trim(),
@@ -20,6 +22,7 @@ const CreateCertificateItem = ({ inputValues }) => {
     return {
       name: "",
       email: null,
+      type: "",
       regno: null,
       year: "",
       month: "",
@@ -31,6 +34,7 @@ const CreateCertificateItem = ({ inputValues }) => {
       setValues({
         name: inputValues.name.trim(),
         email: inputValues.email.trim(),
+        type: inputValues.type.trim(),
         regno: inputValues.regno.trim(),
         year: inputValues.year.trim(),
         month: inputValues.month.trim(),
@@ -43,7 +47,7 @@ const CreateCertificateItem = ({ inputValues }) => {
     instance
       .post("/certificates/new", values)
       .then((data) => {
-        setData(data.data.data);
+        setSuccess(true);
         setLoading(false);
       })
       .catch((err) => {
@@ -64,9 +68,19 @@ const CreateCertificateItem = ({ inputValues }) => {
           <input
             id="name"
             type="text"
-            className="w-80 border-2 inline-block h-12 px-5 py-3 text-sm rounded-lg border-black"
+            className="input-field placeholder:text-[#BABABA] h-14"
             placeholder="Name"
             value={values.name}
+            onChange={handleChange}
+          />
+        </td>
+        <td>
+          <input
+            id="type"
+            type="text"
+            className="input-field placeholder:text-[#BABABA] h-14"
+            placeholder="Type"
+            value={values.type}
             onChange={handleChange}
           />
         </td>
@@ -75,7 +89,7 @@ const CreateCertificateItem = ({ inputValues }) => {
             id="year"
             placeholder="Year"
             type="text"
-            className="w-80 border-2 inline-block h-12 px-5 py-3 text-sm rounded-lg border-black"
+            className="input-field placeholder:text-[#BABABA] h-14"
             value={values.year}
             onChange={handleChange}
           />
@@ -85,34 +99,26 @@ const CreateCertificateItem = ({ inputValues }) => {
             id="month"
             placeholder="Month"
             type="text"
-            className="w-80 border-2 inline-block h-12 px-5 py-3 text-sm rounded-lg border-black"
+            className="input-field placeholder:text-[#BABABA] h-14"
             value={values.month}
             onChange={handleChange}
           />
         </td>
         <td>
-          <div className="w-full flex justify-betweend">
-            <Button className="btn-primary mx-2 w-1/2" onClick={() => {}}>
-              Submit
+          <div className="w-full flex justify-center">
+            <Button
+              className={`${
+                success ? "btn-success" : "btn-primary"
+              } mx-2 w-3/4`}
+              onClick={onClick}
+              isLoading={isLoading}
+              disabled={isLoading || success}
+            >
+              {success ? "Generated!" : "Generate"}
             </Button>
           </div>
         </td>
       </tr>
-
-      <div className="flex flex-row w-full">
-        <button
-          className="w-25 inline-block px-5 py-3 font-medium text-white bg-black rounded-lg"
-          onClick={onClick}
-        >
-          {isLoading ? "Loading..." : "Submit"}
-        </button>
-      </div>
-
-      <pre>{JSON.stringify(values, null, 2)}</pre>
-
-      <div>
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      </div>
     </>
   );
 };

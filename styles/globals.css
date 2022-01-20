@@ -35,3 +35,6 @@ a {
 .btn-error-outline {
   @apply bg-none border-[#F44336] border-2 focus:outline-none text-[#F44336] p-0 rounded-lg drop-shadow-lg;
 }
+.btn-success {
+  @apply bg-green-500 focus:outline-none text-white p-2 rounded-lg drop-shadow-lg;
+}

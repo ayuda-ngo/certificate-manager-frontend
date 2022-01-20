@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { getSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 
@@ -6,8 +6,14 @@ import Image from "next/image";
 
 // Project Imports
 import logo from "../public/assests/logo.svg";
+import Button from "../containers/Button";
+import Banner from "../components/Banner";
 
 const LogIn = () => {
+  const [loading, setLoading] = useState(false);
+  const [showBanner, setShowBanner] = useState(false);
+  const [err, setError] = useState(null);
+
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
@@ -15,6 +21,7 @@ const LogIn = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
@@ -26,21 +33,30 @@ const LogIn = () => {
     });
 
     if (res.error) {
-      console.log(res.error);
+      setError(res.error);
+      setShowBanner(true);
+      setLoading(false);
     } else {
       router.replace("/dashboard");
     }
   };
 
   return (
-    <section>
+    <section className="relative w-full h-full">
+      {showBanner && (
+        <Banner
+          type="error"
+          message={err}
+          toggle={() => setShowBanner(!showBanner)}
+        />
+      )}
       <div className="bg-[url('../public/assests/login-background.png')] w-screen h-screen relative z-10">
         <div
           className="w-full h-full relative z-20 flex justify-center items-center"
           style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
         >
           <div className="w-80 md:w-[38rem] h-auto flex justify-center items-center flex-col">
-            <div className="pb-10">
+            <div className="pb-8">
               <Image src={logo} alt="Ayuda NGO" />
             </div>
             <div className="bg-white opacity-100 relative z-30 w-full h-ful p-8 rounded-lg">
@@ -68,9 +84,13 @@ const LogIn = () => {
                     ref={passwordInputRef}
                   />
                 </div>
-                <button type="submit" className="btn-primary w-44 my-6">
-                  Login
-                </button>
+                <Button
+                  type="submit"
+                  className="btn-primary w-44 my-6"
+                  isLoading={loading}
+                >
+                  LogIn
+                </Button>
               </form>
             </div>
           </div>

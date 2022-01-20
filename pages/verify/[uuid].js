@@ -65,7 +65,11 @@ const Post = ({ certificate }) => {
             <div className="pt-4">
               <h1 className="pl-6 md:pl-11 font-semibold">Preview</h1>
               <div className="flex justify-center">
-                <div className="w-11/12 flex justify-center bg-[#CACACA] my-2 p-6 relative">
+                <div
+                  className={`w-11/12 flex justify-center bg-[#CACACA] my-2 p-6 relative ${
+                    isLoading && "animate-pulse"
+                  }`}
+                >
                   <div className="h-auto w-96">
                     {!isLoading && (
                       <Image

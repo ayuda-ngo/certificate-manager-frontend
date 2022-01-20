@@ -6,12 +6,13 @@ export default function Button({
   className,
   children,
   icon,
+  ...rest
 }) {
   return (
-    <button className={className} onClick={onClick}>
+    <button className={className} onClick={onClick} {...rest}>
       <div className="flex items-center justify-center">
-        <div className="inline pr-1">{isLoading ? <LoadingIcon /> : icon}</div>
-        <div className="inline font-bold">
+        <div className="inline">{isLoading ? <LoadingIcon /> : icon}</div>
+        <div className="inline font-bold mx-2">
           {isLoading ? "Loading..." : children}
         </div>
       </div>

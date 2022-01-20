@@ -29,8 +29,6 @@ export default NextAuth({
       },
 
       async authorize(credentials) {
-        console.log("authorize", credentials);
-
         const client = await connectToDatabase();
 
         const usersCollection = await client.db().collection("users");
@@ -51,7 +49,7 @@ export default NextAuth({
 
         if (!isValid) {
           client.close();
-          throw new Error("Could not log you in!");
+          throw new Error("Invalid password!");
         }
 
         client.close();
@@ -59,7 +57,6 @@ export default NextAuth({
       },
     }),
   ],
-  debug: true,
   pages: {
     signIn: "/login",
   },

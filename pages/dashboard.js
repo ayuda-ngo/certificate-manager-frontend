@@ -1,16 +1,16 @@
 import { useSession } from "next-auth/react";
+import Head from "next/head";
+import { useRouter } from "next/router";
 
+// assets
+import { PlusCircle } from "../containers/icons";
+
+// project imports
 import instance from "../lib/axiosInstance";
 import ViewCertificateItem from "../components/ViewCertificateItem";
-
-// Project Imports
-import { useRouter } from "next/router";
-import Head from "next/head";
-import { PlusCircle, LogOutIcon, CertificateIcon } from "../containers/icons";
 import Button from "../containers/Button";
 import SideBar from "../containers/SideBar";
 import Wishing from "../containers/Wishing";
-import Banner from "../containers/Banner";
 
 const DashboardPage = ({ certificates, error }) => {
   const { data: session } = useSession();
@@ -28,7 +28,7 @@ const DashboardPage = ({ certificates, error }) => {
   return (
     <>
       <Head>
-        <title>Dashboard</title>
+        <title>Dashboard | Certify</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:type" content="website" />
         <meta name="og:title" property="og:title" content="Dashboard" />
@@ -43,6 +43,8 @@ const DashboardPage = ({ certificates, error }) => {
       <section>
         <div className="w-screen h-screen md:w-screen md:min-h-screen md:flex">
           <SideBar />
+
+          <pre>{JSON.stringify(certificates, null, 2)}</pre>
 
           <div className="w-[100%] md:w-[90%] h-full md:pl-8 md:pt-10 relative bg-[#F8F8FE]">
             <Wishing username={session.user.name} />

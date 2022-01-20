@@ -16,6 +16,7 @@ export default class CSVReaderComponent extends Component {
 
   handleOnFileLoad = (data) => {
     data.pop();
+    data.shift();
     this.props.setCSVData(data);
     console.log("---------------------------");
     console.log(data);
@@ -50,7 +51,7 @@ export default class CSVReaderComponent extends Component {
         onRemoveFile={this.handleOnRemoveFile}
       >
         {({ file }) => (
-          <aside className="flex flex-col w-full justify-center items-center">
+          <aside className="flex flex-col w-full justify-center items-center my-4">
             <input
               className="w-full input-field text-center"
               disabled
