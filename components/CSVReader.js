@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 import { CSVReader } from "react-papaparse";
+import Button from "../containers/Button";
+import { FolderIcon, RemoveFolderIcon } from "../containers/icons";
 
 const buttonRef = React.createRef();
 
@@ -45,29 +47,31 @@ export default class CSVReaderComponent extends Component {
         ref={buttonRef}
         onFileLoad={this.handleOnFileLoad}
         onError={this.handleOnError}
-        noClick
-        noDrag
         onRemoveFile={this.handleOnRemoveFile}
       >
         {({ file }) => (
-          <aside className="flex flex-row w-full justify-center items-center">
-            <button
-              type="button"
-              className="w-25 inline-block px-5 py-3 font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-500"
-              onClick={this.handleOpenDialog}
-            >
-              Browse file
-            </button>
-            <div className="flex-auto w-50 inline-block h-12 text-sm border-2 rounded-lg border-black">
-              {file && file.name}
+          <aside className="flex flex-col w-full justify-center items-center">
+            <input
+              className="w-full input-field text-center"
+              disabled
+              value={file ? file.name : "Only .csv files allowed."}
+            />
+            <div className="flex w-full p-0 m-0">
+              <Button
+                icon={<FolderIcon />}
+                className="btn-primary w-full mt-6 mr-4"
+                onClick={this.handleOpenDialog}
+              >
+                Browse File
+              </Button>
+              <Button
+                icon={<RemoveFolderIcon />}
+                className="btn-error w-full mt-6"
+                onClick={this.handleRemoveFile}
+              >
+                Remove
+              </Button>
             </div>
-            <button
-              type="button"
-              className="w-25 inline-block px-5 py-3 font-medium text-white bg-red-600 rounded-lg hover:bg-red-500"
-              onClick={this.handleRemoveFile}
-            >
-              Remove
-            </button>
           </aside>
         )}
       </CSVReader>

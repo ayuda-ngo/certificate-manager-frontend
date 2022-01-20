@@ -51,7 +51,7 @@ const LogIn = () => {
                   <input
                     type="email"
                     placeholder="Enter your email"
-                    className="block w-full bg-[#F1F1F1] placeholder:text-[#BABABA] h-14 rounded-md px-2"
+                    className="input-field placeholder:text-[#BABABA] h-14"
                     id="email"
                     required
                     ref={emailInputRef}
@@ -62,16 +62,13 @@ const LogIn = () => {
                   <input
                     type="password"
                     placeholder="Enter your password"
-                    className="block w-full bg-[#F1F1F1] placeholder:text-[#BABABA] h-14 rounded-md px-2"
+                    className="input-field placeholder:text-[#BABABA] h-14"
                     id="password"
                     required
                     ref={passwordInputRef}
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="text-white bg-[#2C7BE5] w-44 py-3 my-6 rounded-md drop-shadow-lg"
-                >
+                <button type="submit" className="btn-primary w-44 my-6">
                   Login
                 </button>
               </form>

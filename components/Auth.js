@@ -5,12 +5,8 @@ function Auth({ children }) {
   const { status } = useSession();
 
   useEffect(() => {
-    if (status === "loading") return; // Do nothing while loading
+    if (status === "loading") return;
     if (status === "unauthenticated") signIn();
-    // if (!isUser) {
-    //   signIn();
-    //   return;
-    // } // If not authenticated, force log in
   }, [status]);
 
   if (status === "authenticated") {

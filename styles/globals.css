@@ -18,3 +18,20 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.input-field {
+  @apply block w-full bg-[#F1F1F1] h-10 rounded-lg p-2 focus:outline-none;
+}
+
+.btn-primary {
+  @apply bg-[#2C7BE5] text-white focus:outline-none p-2 rounded-lg drop-shadow-lg;
+}
+.btn-secondary {
+  @apply bg-[#FFCF00] focus:outline-none p-2 rounded-lg drop-shadow-lg;
+}
+.btn-error {
+  @apply bg-[#F44336] focus:outline-none text-white p-2 rounded-lg drop-shadow-lg;
+}
+.btn-error-outline {
+  @apply bg-none border-[#F44336] border-2 focus:outline-none text-[#F44336] p-0 rounded-lg drop-shadow-lg;
+}
