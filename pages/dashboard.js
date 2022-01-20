@@ -44,8 +44,6 @@ const DashboardPage = ({ certificates, error }) => {
         <div className="w-screen h-screen md:w-screen md:min-h-screen md:flex">
           <SideBar />
 
-          <pre>{JSON.stringify(certificates, null, 2)}</pre>
-
           <div className="w-[100%] md:w-[90%] h-full md:pl-8 md:pt-10 relative bg-[#F8F8FE]">
             <Wishing username={session.user.name} />
             <div className="w-full flex justify-center items-center relative">
