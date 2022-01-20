@@ -67,7 +67,7 @@ const Post = ({ certificate }) => {
                 <div className="inline pl-1 font-medium text-sm">Back</div>
               </div>
             </button>
-            <div className="pt-10">
+            <div className="pt-8">
               <h1 className="pl-6 md:pl-11 font-semibold">Preview</h1>
               <div className="flex justify-center">
                 <div className="w-11/12 flex justify-center bg-[#CACACA] my-6 p-6 relative">
@@ -78,7 +78,7 @@ const Post = ({ certificate }) => {
                         alt="Certificate"
                         layout="responsive"
                         width={384}
-                        height={544}
+                        height={534}
                       />
                     )}
                   </div>
