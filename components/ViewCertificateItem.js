@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import instance from "../lib/axiosInstance";
 
+// assets
+import { TrashIcon, EyeIcon } from "@heroicons/react/outline";
+
 // project imports
-import { DeleteIcon, ViewIcon } from "../containers/icons";
 import Button from "../containers/Button";
 
 const ViewCertificateItem = ({ certificate }) => {
@@ -45,7 +47,7 @@ const ViewCertificateItem = ({ certificate }) => {
           <Button
             className="btn-primary mx-2 w-1/2"
             onClick={handleViewCertificate}
-            icon={<ViewIcon />}
+            icon={<EyeIcon className="h-5 w-5" />}
           >
             View
           </Button>
@@ -54,7 +56,7 @@ const ViewCertificateItem = ({ certificate }) => {
             className="btn-error-outline mx-2 w-1/2"
             onClick={handleDeleteCertificate}
             isLoading={isLoading}
-            icon={<DeleteIcon />}
+            icon={<TrashIcon className="h-5 w-5" />}
           >
             Delete
           </Button>

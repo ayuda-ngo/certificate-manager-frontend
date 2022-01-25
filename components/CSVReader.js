@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 
 import { CSVReader } from "react-papaparse";
+
+// assets
+import { FolderAddIcon, FolderRemoveIcon } from "@heroicons/react/outline";
+
+// project imports
 import Button from "../containers/Button";
-import { FolderIcon, RemoveFolderIcon } from "../containers/icons";
 
 const buttonRef = React.createRef();
 
@@ -59,14 +63,14 @@ export default class CSVReaderComponent extends Component {
             />
             <div className="flex w-full p-0 m-0">
               <Button
-                icon={<FolderIcon />}
+                icon={<FolderAddIcon className="h-5 w-5" />}
                 className="btn-primary w-full mt-6 mr-4"
                 onClick={this.handleOpenDialog}
               >
                 Browse File
               </Button>
               <Button
-                icon={<RemoveFolderIcon />}
+                icon={<FolderRemoveIcon className="h-5 w-5" />}
                 className="btn-error w-full mt-6"
                 onClick={this.handleRemoveFile}
               >

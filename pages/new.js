@@ -1,8 +1,9 @@
 import { useState } from "react";
+import Head from "next/head";
 import { useSession } from "next-auth/react";
 
 // assets
-import { FolderIcon, PlusCircle } from "../containers/icons";
+import { FolderAddIcon, PlusCircleIcon } from "@heroicons/react/outline";
 
 // project imports
 import GenerateCertificate from "../components/GenerateCertificate";
@@ -11,7 +12,6 @@ import CreateCertificateItem from "../components/CreateCertificateItem";
 import Button from "../containers/Button";
 import Wishing from "../containers/Wishing";
 import SideBar from "../containers/SideBar";
-import Head from "next/head";
 
 const New = () => {
   const { data: session } = useSession();
@@ -96,11 +96,11 @@ const New = () => {
                         <div className="flex justify-center items-center mt-8 mb-32">
                           <div>
                             <Button
-                              icon={<PlusCircle />}
+                              icon={<PlusCircleIcon className="w-5 h-5" />}
                               onClick={() =>
                                 setShowGenerateModal(!showGenerateModal)
                               }
-                              className="btn-primary w-28 mx-10"
+                              className="btn-primary mx-10"
                             >
                               Generate
                             </Button>
@@ -111,10 +111,10 @@ const New = () => {
                               onClick={() =>
                                 setShowBrosweFileModal(!showBrowseFileModal)
                               }
-                              icon={<FolderIcon />}
-                              className="btn-secondary w-28 mx-10"
+                              icon={<FolderAddIcon className="w-5 h-5" />}
+                              className="btn-secondary mx-10"
                             >
-                              Browse
+                              Add File
                             </Button>
                           </div>
                         </div>

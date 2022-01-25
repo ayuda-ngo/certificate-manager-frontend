@@ -2,7 +2,8 @@ import Image from "next/image";
 import { signOut } from "next-auth/react";
 
 // assets
-import { CertificateIcon, LogOutIcon } from "./icons";
+import { LogoutIcon } from "@heroicons/react/outline";
+import CertificateIcon from "./icons/CertificateIcon";
 import logo from "../public/assests/logo2.svg";
 
 // project imports
@@ -26,7 +27,7 @@ const SideBar = () => {
 
       <Button
         className="btn-error-outline mx-2"
-        icon={<LogOutIcon />}
+        icon={<LogoutIcon className="h-5 w-5" />}
         onClick={() => signOut()}
       >
         Logout

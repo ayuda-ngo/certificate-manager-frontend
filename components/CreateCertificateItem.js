@@ -47,7 +47,11 @@ const CreateCertificateItem = ({ inputValues }) => {
     instance
       .post("/certificates/new", values)
       .then((data) => {
-        setSuccess(true);
+        if (data.data.success) {
+          setSuccess(true);
+        } else {
+          setError(data.data.message);
+        }
         setLoading(false);
       })
       .catch((err) => {

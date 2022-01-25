@@ -1,26 +1,26 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
-import { useRouter } from "next/router";
 
-// Project Imports
+// assets
+import CertificateIcon from "../../containers/icons/CertificateIcon";
+import {
+  ClipboardCheckIcon,
+  ClipboardCopyIcon,
+  DownloadIcon,
+} from "@heroicons/react/outline";
+
+// project imports
 import { jsPDF } from "jspdf";
 import instance from "../../lib/axiosInstance";
 import Button from "../../containers/Button";
-import {
-  CertificateIcon,
-  CopiedIcon,
-  DownloadIcon,
-  LeftArrowIcon,
-  ShareIcon,
-} from "../../containers/icons";
+
+import CertificateLoader from "../../containers/CertificateLoader";
 
 const Post = ({ certificate }) => {
   const [certificateImage, setCertificateImage] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [copied, setCopied] = useState(false);
-
-  const router = useRouter();
 
   useEffect(() => {
     const fetchImageData = async () => {
@@ -55,23 +55,14 @@ const Post = ({ certificate }) => {
       <section>
         <div className="w-full h-auto md:h-screen md:flex md:flex-row relative">
           <div className="md:w-3/4 md:h-full relative bg-[#F8F8FE] pt-4">
-            <Button
-              className="focus:outline-none p-0 rounded-lg drop-shadow-lg ml-6 md:ml-11 border-2 w-20 border-[#000]"
-              onClick={() => router.back()}
-              icon={<LeftArrowIcon />}
-            >
-              Back
-            </Button>
             <div className="pt-4">
               <h1 className="pl-6 md:pl-11 font-semibold">Preview</h1>
-              <div className="flex justify-center">
-                <div
-                  className={`w-11/12 flex justify-center bg-[#CACACA] my-2 p-6 relative ${
-                    isLoading && "animate-pulse"
-                  }`}
-                >
-                  <div className="h-auto w-96">
-                    {!isLoading && (
+              <div className="flex justify-center duration-300">
+                <div className="w-11/12 flex justify-center bg-[#CACACA] my-2 p-6 relative">
+                  {isLoading ? (
+                    <CertificateLoader />
+                  ) : (
+                    <div className="h-auto w-96">
                       <Image
                         src={certificateImage}
                         alt="Certificate"
@@ -79,8 +70,8 @@ const Post = ({ certificate }) => {
                         width={390}
                         height={550}
                       />
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -98,7 +89,7 @@ const Post = ({ certificate }) => {
                   <Button
                     className="btn-primary w-2/4"
                     onClick={handleDownload}
-                    icon={<DownloadIcon />}
+                    icon={<DownloadIcon className="h-5 w-5" />}
                   >
                     Download
                   </Button>
@@ -107,7 +98,13 @@ const Post = ({ certificate }) => {
                   <Button
                     className="btn-secondary w-2/4"
                     onClick={handleCopy}
-                    icon={copied ? <CopiedIcon /> : <ShareIcon />}
+                    icon={
+                      copied ? (
+                        <ClipboardCheckIcon className="h-5 w-5" />
+                      ) : (
+                        <ClipboardCopyIcon className="h-5 w-5" />
+                      )
+                    }
                   >
                     {copied ? "Copied!" : "Share"}
                   </Button>
