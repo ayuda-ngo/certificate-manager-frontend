@@ -34,7 +34,7 @@ section {
   @apply bg-[#FFCF00] focus:outline-none p-2 rounded-lg drop-shadow-lg duration-300;
 }
 .btn-error {
-  @apply bg-[#F44336]  focus:outline-none text-white p-2 rounded-lg drop-shadow-lg duration-300;
+  @apply bg-[#F44336] focus:outline-none text-white p-2 rounded-lg drop-shadow-lg duration-300;
 }
 .btn-error-outline {
   @apply bg-none border-[#F44336] hover:bg-[#F44336] hover:text-white border-2 focus:outline-none text-[#F44336] p-0 rounded-lg drop-shadow-lg duration-300;

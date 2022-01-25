@@ -14,9 +14,7 @@ export default function Button({
         <div className="inline pl-2">
           {isLoading ? <DotsCircleHorizontalIcon className="h-5 w-5" /> : icon}
         </div>
-        <div className="inline font-bold mx-2">
-          {isLoading ? "Loading..." : children}
-        </div>
+        <div className="inline mx-2">{isLoading ? "Loading..." : children}</div>
       </div>
     </button>
   );

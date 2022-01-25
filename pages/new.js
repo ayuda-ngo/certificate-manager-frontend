@@ -65,9 +65,9 @@ const New = () => {
                             <th className="text-[#2C7BE5] text-left">
                               Name of Event
                             </th>
-                            <th className="text-[#2C7BE5]">Type</th>
-                            <th className="text-[#2C7BE5]">Month</th>
-                            <th className="text-[#2C7BE5]">Year</th>
+                            <th className="text-[#2C7BE5] text-left">Type</th>
+                            <th className="text-[#2C7BE5] text-left">Month</th>
+                            <th className="text-[#2C7BE5] text-left">Year</th>
                             <th className="text-[#2C7BE5]">Action</th>
                           </tr>
                         </thead>

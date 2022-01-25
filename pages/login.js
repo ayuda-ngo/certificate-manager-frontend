@@ -7,7 +7,6 @@ import Image from "next/image";
 // Project Imports
 import logo from "../public/assests/logo.svg";
 import Button from "../containers/Button";
-import Banner from "../components/Banner";
 
 const LogIn = () => {
   const [loading, setLoading] = useState(false);
@@ -22,6 +21,7 @@ const LogIn = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     setLoading(true);
+    setError(null);
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
@@ -43,13 +43,6 @@ const LogIn = () => {
 
   return (
     <section className="relative w-full h-full">
-      {showBanner && (
-        <Banner
-          type="error"
-          message={err}
-          toggle={() => setShowBanner(!showBanner)}
-        />
-      )}
       <div className="bg-[url('../public/assests/login-background.png')] w-screen h-screen relative z-10">
         <div
           className="w-full h-full relative z-20 flex justify-center items-center"
@@ -92,6 +85,7 @@ const LogIn = () => {
                   LogIn
                 </Button>
               </form>
+              {err && <div className="text-red-600 text-center">{err}</div>}
             </div>
           </div>
         </div>

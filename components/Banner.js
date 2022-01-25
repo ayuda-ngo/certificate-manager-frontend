@@ -34,8 +34,14 @@ const Banner = ({ type, message, toggle }) => {
   useEffect(() => {
     console.log(type);
 
-    if (type === "error") setColor("red");
-    if (type === "success") setColor("green");
+    if (type === "error") {
+      setColor("red");
+      setBannerIcon(type);
+    }
+    if (type === "success") {
+      setColor("green");
+      setBannerIcon(type);
+    }
   }, [type]);
 
   return (

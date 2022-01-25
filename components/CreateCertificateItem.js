@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Button from "../containers/Button";
+import CertificateIcon from "../containers/icons/CertificateIcon";
 import instance from "../lib/axiosInstance";
 
 const CreateCertificateItem = ({ inputValues }) => {
@@ -113,8 +114,9 @@ const CreateCertificateItem = ({ inputValues }) => {
             <Button
               className={`${
                 success ? "btn-success" : "btn-primary"
-              } mx-2 w-3/4`}
+              } mx-2 w-full`}
               onClick={onClick}
+              icon={<CertificateIcon className="text-white" />}
               isLoading={isLoading}
               disabled={isLoading || success}
             >

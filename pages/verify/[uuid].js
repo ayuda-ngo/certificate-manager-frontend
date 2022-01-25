@@ -29,7 +29,7 @@ const Post = ({ certificate }) => {
       setIsLoading(false);
     };
 
-    fetchImageData();
+    // fetchImageData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -1,4 +1,4 @@
-export default function Toast() {
+const Toast = () => {
   return (
     <>
       <div className="flex space-x-2 justify-center">
@@ -29,4 +29,6 @@ export default function Toast() {
       </div>
     </>
   );
-}
+};
+
+export default Toast;
