@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 import Image from "next/image";
 
-// Project Imports
+// project imports
 import logo from "../public/assests/logo.svg";
 import Button from "../containers/Button";
 
