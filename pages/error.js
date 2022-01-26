@@ -8,9 +8,11 @@ const ErrorPage = () => {
 
   code = code || "404";
 
+  message = message || "Page not found:Please check the url. ";
+
   message = message.split(":");
-  const title = message[0] || "Page not found";
-  const reason = message[1] || "Please check the url.";
+  const title = message[0];
+  const reason = message[1];
 
   return (
     <body className="w-screen h-screen font-sans antialiased text-gray-600 min-h-full flex flex-col">
