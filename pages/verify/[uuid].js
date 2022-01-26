@@ -34,7 +34,7 @@ const Post = ({ certificate }) => {
   }, []);
 
   const handleDownload = () => {
-    const doc = new jsPDF();
+    const doc = new jsPDF({ compress: true });
 
     doc.addImage(certificateImage, "PNG", 0, 0, 210, 297);
     doc.save(`${certificate.name}.pdf`);
