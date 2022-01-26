@@ -67,8 +67,9 @@ const Post = ({ certificate }) => {
                         src={certificateImage}
                         alt="Certificate"
                         layout="responsive"
-                        width={390}
-                        height={550}
+                        className="rounded-lg"
+                        width={420}
+                        height={600}
                       />
                     </div>
                   )}
@@ -90,6 +91,7 @@ const Post = ({ certificate }) => {
                     className="btn-primary w-2/4"
                     onClick={handleDownload}
                     icon={<DownloadIcon className="h-5 w-5" />}
+                    disabled={isLoading}
                   >
                     Download
                   </Button>
@@ -105,6 +107,7 @@ const Post = ({ certificate }) => {
                         <ClipboardCopyIcon className="h-5 w-5" />
                       )
                     }
+                    disabled={isLoading}
                   >
                     {copied ? "Copied!" : "Share"}
                   </Button>
