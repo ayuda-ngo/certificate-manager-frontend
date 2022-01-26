@@ -25,7 +25,7 @@ const ViewCertificateItem = ({ certificate }) => {
       .delete(`/certificates/${uuid}`)
       .then((res) => {
         if (res.data.success) {
-          router.push("/dashboard");
+          router.reload();
         } else {
           setIsLoading(false);
         }
