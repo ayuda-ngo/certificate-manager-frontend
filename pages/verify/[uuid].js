@@ -48,7 +48,7 @@ const Post = ({ certificate }) => {
   return (
     <>
       <Head>
-        <title>{`${certificate.name} - Verify`}</title>
+        <title>{`Certify | ${certificate.name}`}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
@@ -78,9 +78,9 @@ const Post = ({ certificate }) => {
           </div>
           <div className="md:w-1/4 md:h-full relative pt-6 md:border-l-2 md:border-[#E3EBF6]">
             <div className="w-full h-full flex flex-col relative justify-between">
-              <div className=" w-full flex justify-center items-center md:border-b-2 md:pb-3 pb-6">
+              <div className=" w-full flex justify-center text-[#0034A5] items-center md:border-b-2 md:pb-3 pb-6">
                 <CertificateIcon size={25} />
-                <p className="inline pl-2 text-[#0034A5] font-semibold md:text-2xl text-xl">
+                <p className="inline pl-2 font-semibold md:text-2xl text-xl">
                   Certificate
                 </p>
               </div>

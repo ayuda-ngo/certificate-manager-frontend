@@ -1,3 +1,4 @@
+import { CheckCircleIcon } from "@heroicons/react/outline";
 import { useEffect, useState } from "react";
 import Button from "../containers/Button";
 import CertificateIcon from "../containers/icons/CertificateIcon";
@@ -116,7 +117,13 @@ const CreateCertificateItem = ({ inputValues }) => {
                 success ? "btn-success" : "btn-primary"
               } mx-2 w-full`}
               onClick={onClick}
-              icon={<CertificateIcon className="text-white" />}
+              icon={
+                success ? (
+                  <CheckCircleIcon className="h-5 w-5" />
+                ) : (
+                  <CertificateIcon className="text-white" />
+                )
+              }
               isLoading={isLoading}
               disabled={isLoading || success}
             >

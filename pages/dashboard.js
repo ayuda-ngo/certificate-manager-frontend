@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 // assets
-import { PlusCircleIcon } from "@heroicons/react/outline";
+import { DownloadIcon, PlusCircleIcon } from "@heroicons/react/outline";
 
 // project imports
 import instance from "../lib/axiosInstance";
@@ -40,11 +40,11 @@ const DashboardPage = ({ certificates, error }) => {
         <meta property="og:url" content="https://certify.ngoayuda.org" />
       </Head>
 
-      <section>
+      <section className="relative">
         <div className="w-screen h-screen md:w-screen md:min-h-screen md:flex">
           <SideBar />
 
-          <div className="w-[100%] md:w-[90%] h-full md:pl-2 md:pt-10 relative bg-[#F8F8FE]">
+          <div className="w-[100%] md:w-[90%] h-full md:pl-2 md:pt-10 relative bg-[#F8F8FE] overflow-x-hidden">
             <Wishing username={session.user.name} />
             <div className="w-full flex justify-center items-center relative">
               <div className="relative w-4/5 ">
@@ -56,8 +56,19 @@ const DashboardPage = ({ certificates, error }) => {
                   >
                     Create New
                   </Button>
+                  <Button
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        JSON.stringify(certificates)
+                      );
+                    }}
+                    className="btn-primary md:my-3 md:mx-2"
+                    icon={<DownloadIcon className="h-5 w-5" />}
+                  >
+                    Download
+                  </Button>
                 </div>
-                <div className="bg-[#FFFFFF] relative w-full rounded-lg shadow-lg p-8 overflow-x-auto">
+                <div className="bg-[#FFFFFF] relative w-full rounded-lg shadow-lg p-8 overflow-x-hidden max-h-[480px] no-scrollbar">
                   <h1 className="font-semibold text-xl">Your Certificates</h1>
                   <table className="w-full mb-12 relative">
                     <colgroup>
@@ -78,7 +89,7 @@ const DashboardPage = ({ certificates, error }) => {
                         <th className="text-[#2C7BE5]">Action</th>
                       </tr>
                     </thead>
-                    <tbody className="">
+                    <tbody>
                       {certificates.map((certificate) => (
                         <ViewCertificateItem
                           key={certificate.uuid}

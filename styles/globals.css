@@ -28,10 +28,10 @@ section {
 }
 
 .btn-primary {
-  @apply bg-[#2C7BE5] hover:bg-white hover:text-[#2C7BE5] border-2 hover:border-[#2C7BE5] text-white focus:outline-none p-2 rounded-lg drop-shadow-lg duration-300;
+  @apply bg-[#2C7BE5] hover:bg-white hover:text-[#2C7BE5] border-2 border-[#2C7BE5] text-white focus:outline-none p-2 rounded-lg drop-shadow-lg duration-300;
 }
 .btn-secondary {
-  @apply bg-[#FFCF00] focus:outline-none p-2 rounded-lg drop-shadow-lg duration-300;
+  @apply bg-[#FFCF00] border-2 border-[#FFCF00] focus:outline-none p-2 rounded-lg drop-shadow-lg duration-300;
 }
 .btn-error {
   @apply bg-[#F44336] focus:outline-none text-white p-2 rounded-lg drop-shadow-lg duration-300;
@@ -46,4 +46,15 @@ section {
 .certificate-dimentions {
   height: 550px;
   width: 390px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

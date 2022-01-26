@@ -38,7 +38,6 @@ const New = () => {
 
       <section>
         <div className="w-screen h-screen md:w-screen md:min-h-screen md:flex">
-          {/* left side */}
           <SideBar />
 
           <div className="w-[100%] md:w-[90%] h-full md:pl-8 md:pt-10 relative bg-[#F8F8FE]">
