@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
+import { Menu, Transition } from "@headlessui/react"
+import { ChevronDownIcon } from "@heroicons/react/outline";
 
 // assets
 import {
@@ -11,6 +13,10 @@ import {
 import instance from "../lib/axiosInstance";
 import Button from "../containers/Button";
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
+
 const GenerateCertificate = ({ toggle, inputValues }) => {
   const [isLoading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -22,6 +28,7 @@ const GenerateCertificate = ({ toggle, inputValues }) => {
         name: inputValues.name.trim(),
         email: inputValues.email.trim(),
         type: inputValues.type.trim(),
+        course: inputValues.course.trim(),
         regno: inputValues.regno.trim(),
         year: inputValues.year.trim(),
         month: inputValues.month.trim(),
@@ -33,6 +40,7 @@ const GenerateCertificate = ({ toggle, inputValues }) => {
       email: null,
       regno: null,
       type: "",
+      service: null,
       year: "",
       month: "",
     };
@@ -45,6 +53,7 @@ const GenerateCertificate = ({ toggle, inputValues }) => {
         email: inputValues.email.trim(),
         regno: inputValues.regno.trim(),
         type: inputValues.type.trim(),
+        service: inputValues.service.trim(),
         year: inputValues.year.trim(),
         month: inputValues.month.trim(),
       });
@@ -81,6 +90,7 @@ const GenerateCertificate = ({ toggle, inputValues }) => {
       email: null,
       regno: null,
       type: "",
+      service: null,
       year: "",
       month: "",
     });
@@ -100,6 +110,7 @@ const GenerateCertificate = ({ toggle, inputValues }) => {
               onClick={handleToggle}
             />
           </div>
+
           <div>
             <div className="pb-2">
               <label className="block py-2">Name</label>
@@ -112,6 +123,7 @@ const GenerateCertificate = ({ toggle, inputValues }) => {
                 className="input-field"
               />
             </div>
+
             <div className="pb-2">
               <label className="block py-2">Year</label>
               <input
@@ -123,6 +135,7 @@ const GenerateCertificate = ({ toggle, inputValues }) => {
                 className="input-field"
               />
             </div>
+
             <div className="pb-2">
               <label className="block py-2">Month</label>
               <input
@@ -134,6 +147,7 @@ const GenerateCertificate = ({ toggle, inputValues }) => {
                 className="input-field"
               />
             </div>
+
             <div className="pb-2">
               <label className="block py-2">Type</label>
               <input
@@ -145,12 +159,24 @@ const GenerateCertificate = ({ toggle, inputValues }) => {
                 className="input-field"
               />
             </div>
+
+            {values.type === "service" && <div className="pb-2">
+              <label className="block py-2">Service</label>
+              <input
+                id="service"
+                type="text"
+                placeholder="Service"
+                value={values.service}
+                onChange={handleChange}
+                className="input-field"
+              />
+            </div>}
+
             <Button
               onClick={handleCreateCertificate}
               isLoading={isLoading}
-              className={`${
-                success ? "btn-success" : "btn-primary"
-              } w-[100%] my-2 mt-6`}
+              className={`${success ? "btn-success" : "btn-primary"
+                } w-[100%] my-2 mt-6`}
               disabled={success}
               icon={
                 success ? (
